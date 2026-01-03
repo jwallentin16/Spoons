@@ -170,4 +170,20 @@ button:disabled {
   }
 }
 
+@keyframes flipIn {
+  from {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+input.typing {
+  animation: flipIn 0.15s ease-out;
+}
+
+
 
