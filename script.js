@@ -171,6 +171,21 @@ document.querySelectorAll("input").forEach(input => {
   });
 });
 
+const toggle = document.getElementById("dark-toggle");
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  localStorage.setItem(
+    "darkMode",
+    document.body.classList.contains("dark")
+  );
+});
+
+if (localStorage.getItem("darkMode") === "true") {
+  document.body.classList.add("dark");
+}
+
+
 
 /* ---------- LOCK IF PLAYED ---------- */
 if (localStorage.getItem(storageKey)) {
