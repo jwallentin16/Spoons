@@ -195,3 +195,16 @@ if (localStorage.getItem(storageKey)) {
 
 /* ---------- EVENTS ---------- */
 submitBtn.addEventListener("click", check);
+
+const spoonFacts = [
+  "The word 'spoon' comes from the Old English 'spōn', meaning chip of wood.",
+  "The average household owns about 40 spoons.",
+  "Spoons predate forks by several hundred years.",
+  "The world’s largest spoon is over 10 feet long.",
+  "Spoonerisms are named after Reverend William Spooner."
+];
+
+document.getElementById("spoon-fact").textContent =
+  spoonFacts[Math.floor(Math.random() * spoonFacts.length)];
+
+
