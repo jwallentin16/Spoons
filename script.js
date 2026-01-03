@@ -35,6 +35,9 @@ const dayIndex = Math.floor(
 const puzzle = puzzles[dayIndex % puzzles.length];
 const storageKey = `spoonerisms-${today.toDateString()}`;
 
+/* ---------- GAME STATE ---------- */
+let guessesLeft = 3;
+
 /* ---------- UI ---------- */
 const container = document.getElementById("game-container");
 const message = document.getElementById("message");
@@ -68,40 +71,59 @@ container.append(rowA.div, rowB.div);
 function normalize(word) {
   return word.toLowerCase().trim();
 }
-
 function check() {
   let correct = 0;
 
-  if (normalize(rowA.input1.value) === normalize(puzzle.pairA[0])) {
-    rowA.input1.classList.add("correct");
-    correct++;
-  }
-  if (normalize(rowA.input2.value) === normalize(puzzle.pairA[1])) {
-    rowA.input2.classList.add("correct");
-    correct++;
-  }
-  if (normalize(rowB.input1.value) === normalize(puzzle.pairB[0])) {
-    rowB.input1.classList.add("correct");
-    correct++;
-  }
-  if (normalize(rowB.input2.value) === normalize(puzzle.pairB[1])) {
-    rowB.input2.classList.add("correct");
-    correct++;
-  }
+  const checks = [
+    [rowA.input1, puzzle.pairA[0]],
+    [rowA.input2, puzzle.pairA[1]],
+    [rowB.input1, puzzle.pairB[0]],
+    [rowB.input2, puzzle.pairB[1]]
+  ];
+
+  checks.forEach(([input, answer]) => {
+    if (normalize(input.value) === normalize(answer)) {
+      input.classList.add("correct");
+      correct++;
+    } else {
+      input.classList.remove("correct");
+    }
+  });
 
   if (correct === 4) {
-    message.textContent = "🎉 Perfect! See you tomorrow.";
+    message.textContent =
+      "🥄 Spoonerific! You're a rockstar. See you tomorrow.";
     localStorage.setItem(storageKey, "won");
     submitBtn.disabled = true;
+    return;
+  }
+
+  guessesLeft--;
+
+  if (correct > 0) {
+    message.textContent = `❌ ${correct} word${correct > 1 ? "s" : ""} correct`;
   } else {
-    message.textContent = "Not quite — try again!";
+    message.textContent = "❌";
+  }
+
+  // Clear inputs for next guess
+  [...document.querySelectorAll("input")].forEach(input => {
+    input.value = "";
+    input.classList.remove("correct");
+  });
+
+  if (guessesLeft === 0) {
+    submitBtn.disabled = true;
+    message.textContent = "❌❌❌ No more guesses — see you tomorrow!";
+    localStorage.setItem(storageKey, "lost");
   }
 }
+
 
 /* ---------- LOCK IF PLAYED ---------- */
 if (localStorage.getItem(storageKey)) {
   submitBtn.disabled = true;
-  message.textContent = "You've already played today's puzzle 🥄";
+  message.textContent = "You've already played today's Spoonerism 🥄";
 }
 
 /* ---------- EVENTS ---------- */
