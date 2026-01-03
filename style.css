@@ -234,6 +234,15 @@ body.dark input {
   }
 }
 
+body {
+  min-height: -webkit-fill-available;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+
 
 
 
