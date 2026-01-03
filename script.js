@@ -164,6 +164,13 @@ function launchConfetti() {
   }
 }
 
+document.querySelectorAll("input").forEach(input => {
+  input.addEventListener("input", () => {
+    input.classList.add("typing");
+    setTimeout(() => input.classList.remove("typing"), 150);
+  });
+});
+
 
 /* ---------- LOCK IF PLAYED ---------- */
 if (localStorage.getItem(storageKey)) {
