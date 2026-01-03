@@ -185,5 +185,30 @@ input.typing {
   animation: flipIn 0.15s ease-out;
 }
 
+body.dark {
+  background: linear-gradient(135deg, #0f3d2e, #145a32);
+}
+
+body.dark .game {
+  background: #1e1e1e;
+  color: #eee;
+}
+
+body.dark input {
+  background: #333;
+  color: #eee;
+  border-color: #555;
+}
+
+#dark-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
 
 
