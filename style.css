@@ -3,7 +3,7 @@
   font-family: "Inter", system-ui, sans-serif;
 }
 
-body {
+body { 
   margin: 0;
   min-height: 100vh;
   background: linear-gradient(135deg, #ff7a18, #ffb347);
