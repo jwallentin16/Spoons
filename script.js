@@ -151,7 +151,7 @@ function launchConfetti() {
   const confetti = document.getElementById("confetti");
   const emojis = ["🎉", "🥄"];
 
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 30; i++) {
     const piece = document.createElement("div");
     piece.className = "confetti-piece";
     piece.textContent = emojis[Math.floor(Math.random() * emojis.length)];
