@@ -100,6 +100,10 @@ function check() {
 
   guessesLeft--;
 
+  container.classList.add("shake");
+  setTimeout(() => container.classList.remove("shake"), 300);
+
+
   if (correct > 0) {
     message.textContent = `❌ ${correct} word${correct > 1 ? "s" : ""} correct`;
   } else {
