@@ -118,3 +118,33 @@ button:disabled {
 .shake {
   animation: shake 0.3s;
 }
+
+/* Guess dots + guesses left */
+#guess-ui {
+  margin-top: 16px;
+}
+
+#guess-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #bbb;
+}
+
+.dot.used {
+  background: transparent;
+}
+
+#guesses-left {
+  font-size: 0.8rem;
+  color: #666;
+}
+
