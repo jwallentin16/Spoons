@@ -38,6 +38,21 @@ const storageKey = `spoonerisms-${today.toDateString()}`;
 /* ---------- GAME STATE ---------- */
 let guessesLeft = 3;
 
+const dotsContainer = document.getElementById("guess-dots");
+const guessesLeftEl = document.getElementById("guesses-left");
+
+function renderDots() {
+  dotsContainer.innerHTML = "";
+  for (let i = 0; i < guessesLeft; i++) {
+    const dot = document.createElement("div");
+    dot.className = "dot";
+    dotsContainer.appendChild(dot);
+  }
+  guessesLeftEl.textContent = `${guessesLeft} guess${guessesLeft !== 1 ? "es" : ""} left`;
+}
+
+renderDots();
+
 /* ---------- UI ---------- */
 const container = document.getElementById("game-container");
 const message = document.getElementById("message");
@@ -104,11 +119,19 @@ function check() {
   setTimeout(() => container.classList.remove("shake"), 300);
 
 
-  if (correct > 0) {
-    message.textContent = `❌ ${correct} word${correct > 1 ? "s" : ""} correct`;
-  } else {
-    message.textContent = "❌";
-  }
+ if (correct > 0) {
+  message.textContent = `❌ ${correct} word${correct > 1 ? "s" : ""} correct`;
+} else {
+  message.textContent = "❌";
+}
+
+const usedDot = dotsContainer.querySelector(".dot");
+if (usedDot) {
+  usedDot.classList.add("used");
+  usedDot.textContent = "❌";
+}
+
+renderDots();
 
   // Clear inputs for next guess
   [...document.querySelectorAll("input")].forEach(input => {
