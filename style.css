@@ -210,5 +210,13 @@ body.dark input {
   cursor: pointer;
 }
 
+#spoon-fact {
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: #777;
+  font-style: italic;
+}
+
+
 
 
