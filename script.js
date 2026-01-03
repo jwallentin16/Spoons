@@ -108,6 +108,7 @@ function check() {
   if (correct === 4) {
     message.textContent =
       "🥄 Spoonerific! You're a rockstar. See you tomorrow.";
+    launchConfetti();
     localStorage.setItem(storageKey, "won");
     submitBtn.disabled = true;
     return;
@@ -143,6 +144,23 @@ renderDots();
     submitBtn.disabled = true;
     message.textContent = "❌❌❌ No more guesses — see you tomorrow!";
     localStorage.setItem(storageKey, "lost");
+  }
+}
+
+function launchConfetti() {
+  const confetti = document.getElementById("confetti");
+  const emojis = ["🎉", "🥄"];
+
+  for (let i = 0; i < 40; i++) {
+    const piece = document.createElement("div");
+    piece.className = "confetti-piece";
+    piece.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    piece.style.left = Math.random() * 100 + "vw";
+    piece.style.animationDuration = 2 + Math.random() * 2 + "s";
+    piece.style.opacity = Math.random();
+    confetti.appendChild(piece);
+
+    setTimeout(() => piece.remove(), 4000);
   }
 }
 
