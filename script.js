@@ -207,4 +207,11 @@ const spoonFacts = [
 document.getElementById("spoon-fact").textContent =
   spoonFacts[Math.floor(Math.random() * spoonFacts.length)];
 
+@media (max-width: 360px) {
+  #guess-dots {
+    gap: 6px;
+  }
+}
+
+
 
