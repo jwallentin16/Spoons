@@ -216,7 +216,7 @@ body.dark input {
   color: #777;
   font-style: italic;
 }
-
+/*
 @media (max-width: 480px) {
   .game {
     margin: 16px auto;
@@ -227,21 +227,6 @@ body.dark input {
     font-size: 16px; /* prevents iOS zoom */
   }
 }
-
-@media (max-width: 480px) {
-  input.typing {
-    animation-duration: 0.1s;
-  }
-}
-
-body {
-  min-height: -webkit-fill-available;
-}
-
-button {
-  touch-action: manipulation;
-}
-
 
 
 
